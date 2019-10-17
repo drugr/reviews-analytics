@@ -28,4 +28,14 @@ for line in data:
 	if 'good' in line:
 		good.append(line)
 print('一共有', len(good), '筆留言提到good')
-print(good[0])
+#print(good)
+
+good = [d for d in data if 'good' in d]
+#第一個d是運算，第57堂課
+
+bad = ['bad' in d for d in data]
+print(bad)
+#意思同下列
+bad = []
+for d in data:
+	bad.append('bad' in d)
