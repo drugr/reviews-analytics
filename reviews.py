@@ -11,14 +11,21 @@ with open('reviews.txt', 'r') as file:
 print('檔案讀取完了，總共有', len(data), '筆資料')
 
 sum_len = 0
-for line1 in data:
-	sum_len += len(line1)
+for line in data:
+	sum_len += len(line)
 print('留言的平均長度為', sum_len / len(data))
 
 new = []
-for line2 in data:
-	if len(line2) < 100:
-		new.append(line2)
+for line in data:
+	if len(line) < 100:
+		new.append(line)
 print('共有', len(new), '筆留言長度小於100個字') #the算三個字
 print(new[0])
 print(new[1])
+
+good = []
+for line in data:
+	if 'good' in line:
+		good.append(line)
+print('一共有', len(good), '筆留言提到good')
+print(good[0])
