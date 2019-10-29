@@ -10,6 +10,9 @@ with open('reviews.txt', 'r') as file:
 
 print('檔案讀取完了，總共有', len(data), '筆資料')
 
+print(data[0])
+
+
 sum_len = 0
 for line in data:
 	sum_len += len(line)
@@ -29,13 +32,55 @@ for line in data:
 		good.append(line)
 print('一共有', len(good), '筆留言提到good')
 #print(good)
-
-good = [d for d in data if 'good' in d]
+# input_word = input('輸入文字查詢留言筆數: ')
+# good = [d for d in data if input_word in d]
+# print(len(good))
 #第一個d是運算，第57堂課
 
-bad = ['bad' in d for d in data]
-print(bad)
+# bad = ['bad' in d for d in data]
+# print(bad)
 #意思同下列
-bad = []
+# bad = []
+# for d in data:
+# 	bad.append('bad' in d)
+
+
+wc = {} # word_count
 for d in data:
-	bad.append('bad' in d)
+	words = d.split(' ')
+	for word in words:
+		if word in wc:
+			wc[word] += 1
+		else:
+			wc[word] = 1
+
+for word in wc:
+	if wc[word] > 1000000:
+		print(word, wc[word])
+
+print(len(wc))
+print(wc['Allen'])
+
+while True:
+	word = input('請問你想查什麼字: ')
+	if word == 'q':
+		print('感謝使用本查詢功能')
+		break
+	if word in wc:
+		print(word, '出現過的次數為', wc[word])
+	else:
+		print('這個字沒有出現過喔!')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
